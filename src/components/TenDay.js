@@ -16,5 +16,4 @@ function TenDay(props) {
   ) 
 }
 
-
 export default TenDay;
