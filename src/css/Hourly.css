@@ -1,0 +1,23 @@
+.hourly-weather {
+  display: grid;
+  grid-template-columns: 200px 50px 1fr;  
+  align-items: center;
+  /*height: 50px;*/
+  margin: 1rem;
+  color: white;
+}
+
+.daily-forecast-img {
+  width: 50px;
+  margin: 0;
+}
+
+.hourly-weather h3 {
+  font-size: 2rem;
+  text-align: end;
+  margin: 0;
+}
+
+.hourly-weather h2 {
+  margin: 0;
+}

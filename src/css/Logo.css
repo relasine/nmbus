@@ -1,0 +1,21 @@
+.logo-container {
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  width: 255px;
+}
+
+.logo {
+  width: 50px;
+}
+
+.brand-title {
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+
+}

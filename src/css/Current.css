@@ -1,0 +1,86 @@
+.current {
+  transition: 1s;
+  position: absolute;
+  margin: 4rem auto;
+  top: 12%;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  opacity: 1;
+}
+
+.inactive {
+  top: 200%;
+  opacity: 0;
+} 
+
+.current-weather-data {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 30rem;
+  height: 20rem;
+  margin: auto;
+  font-family: 'Open Sans', sans-serif;
+  color: #FFF;
+}
+
+.current-location {
+  font-size: 1.5rem;
+  margin: auto;
+  padding-top: 1rem;
+  text-align: center;
+  color: #FFF;
+}
+
+.day-label {
+  font-weight: 300;
+}
+
+article {
+  display: grid;
+  align-items: center;
+}
+
+.weather-img-aside {
+  padding-top: 2rem;
+}
+
+.weather-img {
+  width: 13rem;
+}
+
+.temperature {
+  font-size: 6rem;
+  margin: 0;
+  color: #FFF;
+  font-weight: 300;
+}
+
+.current-weather-right-containter {
+  display: grid;
+  align-items: center;
+}
+
+.wind,
+.humidity,
+.highlow {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.weather-label,
+.weather-description {
+  color: #FFF;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.weather-description {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 300;
+  padding-bottom: 1rem;
+}

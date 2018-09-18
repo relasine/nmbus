@@ -1,0 +1,37 @@
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+}
+
+.bottom-bar p {
+  margin: 0;
+}
+
+.ten-day-button, 
+.current-button {
+  border-right: solid 1px rgba(0, 0 ,0 .1);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.button:hover {
+  background: #000;
+  color: #fff;
+}
+
+.button h4 {
+  text-align: center;
+  margin: 0;
+}
