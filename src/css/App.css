@@ -1,4 +1,11 @@
 .App {
+  background: url('/nmbus-back.png');
+  background-size: cover;
+  max-width: 414px;
+  max-height: 736px;
+}
+
+.App main {
   position: relative;
   width: 414px;
   height: 736px;

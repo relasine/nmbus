@@ -1,10 +1,29 @@
 .logo-container {
   padding: 0;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
+  margin: 0;
   height: 100px;
   width: 255px;
+}
+
+.logo-box {
+  transition: .5s;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  display: flex;
+  height: 100px;
+  width: 114px;
+}
+
+.logo-inactive {
+  opacity: 0;
+  margin-left: default;
+  margin-right: default;
+  left: 0;
+  right: 100%;
 }
 
 .logo {
@@ -18,4 +37,34 @@
   font-size: 1.2rem;
   text-align: center;
 
+}
+
+.search-icon {
+  position: absolute;
+  width: 30px;
+  left: 15px;
+  top: 15px;
+  z-index: 1
+}
+
+.search-field {
+  position: absolute;
+  height: 30px;
+  border-radius: 25px;
+  width: 300px;
+  font-size: 22px;
+  border: none;
+  top: 14px;
+  text-indent: 10px;
+  left: 56px;
+  transition: .5s;
+  z-index: 1;
+}
+
+.search-icon:hover {
+  cursor: pointer;
+}
+
+.inactive-search {
+  left: 200%;
 }

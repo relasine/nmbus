@@ -25,7 +25,7 @@ class App extends Component {
       sevenHourButton: 'seven-hour-button seven-hour-button-inactive button'
     }
     this.pageSet = this.pageSet.bind(this);
-}
+  }
 
 pageSet(page) {
   if (page === 'current' && this.state.currentState !== 'active current') { 
@@ -71,6 +71,7 @@ componentDidMount() {
     if(this.state.data) {
       return (
         <div className="App">
+          <main>
           <Logo />
           <Current 
             classSetting={this.state.currentState} 
@@ -87,6 +88,7 @@ componentDidMount() {
             tenDayButton={this.state.tenDayButton}
             sevenHourButton={this.state.sevenHourButton}
           />
+          </main>
         </div>
       );
     } else {
