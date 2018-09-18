@@ -1,0 +1,23 @@
+.daily-weather {
+  display: grid;
+  grid-template-columns: 200px 50px 1fr;  
+  align-items: center;
+  /*height: 50px;*/
+  margin: .45rem 1rem;
+  color: white;
+}
+
+.daily-forecast-img {
+  width: 40px;
+  margin: 0;
+}
+
+.daily-weather h3 {
+  font-size: 1rem;
+  text-align: end;
+  margin: 0;
+}
+
+.daily-weather h2 {
+  font-size: 1rem;
+}

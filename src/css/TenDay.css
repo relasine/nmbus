@@ -1,13 +1,13 @@
-.seven-hour {
+.ten-day {
   transition: 1s;
   position: absolute;
   top: 12%;
-  left: 0;
+  right: 0;
   width: 100vw;
   opacity: 1;
 }
 
-.inactive-seven-hour {
-  left: 200%;
+.inactive-ten-day {
+  right: 200%;
   opacity: 0;
 } 

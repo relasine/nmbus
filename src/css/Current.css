@@ -9,7 +9,7 @@
   opacity: 1;
 }
 
-.inactive {
+.inactive-current {
   top: 200%;
   opacity: 0;
 } 

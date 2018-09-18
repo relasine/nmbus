@@ -26,8 +26,10 @@
   transition: .5s;
 }
 
-.button:hover {
-  background: #000;
+.ten-day-button-inactive,
+.current-button-inactive,
+.seven-hour-button-inactive {
+  background: #1B353A;
   color: #fff;
 }
 
