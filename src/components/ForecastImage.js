@@ -20,7 +20,8 @@ const weatherIcons = {
   chancetstorms: './t-storm.svg',
   haze: './cloud.svg',
   fog: './cloud.svg',
-  tstorms: './t-storm.svg'
+  tstorms: './t-storm.svg',
+  unknown: './question-on-cloud.svg'
   };
  
 function ForecastImage(props) {
