@@ -5,6 +5,7 @@ import Current from './Current'
 import SevenHour from './SevenHour'
 import TenDay from './TenDay'
 import BottomBar from './BottomBar'
+import ErrorPage from './ErrorPage'
 // import data from '../fakeapi'
 import apikey from '../apikey';
 import Trie from '@relasine/auto-complete';
@@ -60,26 +61,23 @@ pageSet(page) {
 }
 
 componentDidMount() {
-    fetch(`http://api.wunderground.com/api/${apikey}/conditions/hourly/forecast10day/q/autoip.json`)
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-        current: true,
-        data: data
-      });
-    });
+    this.fetchCall('autoip')
     this.state.trie.populate(cities.data);
 
 }
 
 fetchCall(string) {
-  const location = string.split(', ')
-  const popped = location.pop()
-  location.unshift(popped)
-  fetch(`http://api.wunderground.com/api/${apikey}/conditions/hourly/forecast10day/q/${location.join('/')}.json`)
+  if (!parseInt(string, 10) && string !== 'autoip') {
+    string = string.split(', ')
+    const popped = string.pop()
+    string.unshift(popped)
+    string = string.join('/')
+  }
+
+  fetch(`http://api.wunderground.com/api/${apikey}/conditions/hourly/forecast10day/q/${string}.json`)
     .then(response => response.json())
     .then(data => {
-      console.log(location, data)
+      // console.log(string, data)
       this.setState({
         current: true,
         data: data,
@@ -97,7 +95,7 @@ fetchCall(string) {
 
   render() {
 
-    if(this.state.data) {
+    if(this.state.data && !this.state.data.response.error) {
       return (
         <div className="App">
           <main>
@@ -123,6 +121,16 @@ fetchCall(string) {
           </main>
         </div>
       );
+    } else if (this.state.data && this.state.data.response.error){
+      return (<div className="App">
+        <main>
+          <Logo 
+            trie={this.state.trie} 
+            fetchCall={this.fetchCall}
+          />
+          <ErrorPage />
+          </main>
+        </div>)
     } else {
       return (<div className="App"></div>)
     }
