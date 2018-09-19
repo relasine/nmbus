@@ -1,6 +1,6 @@
 This project is a weather app designed specifically for phones. It uses simple, minimalist design built in React, leverages the Weather Underground api, and includes a custom auto-complete function as an npm module. This iteration of the project is a complete refactoring of a (http://www.github.com/relasine/weathrly "previous weather app") that I created for Mod of the Front End Engineering program at The Turing School of Software and Design.
 
-All transitions are animated between the current forecast, ten-day forecast, seven-hour forecastj, the search bar, and the logo.
+All transitions are animated between the current forecast, ten-day forecast, seven-hour forecast, the search bar, and the logo.
 
 ![pic4](https://user-images.githubusercontent.com/29719272/45781213-9897ee00-bc1c-11e8-81aa-cf43001b7aa5.png) 
 ![pic2](https://user-images.githubusercontent.com/29719272/45781188-8fa71c80-bc1c-11e8-8432-9558fdf93de4.png) 
