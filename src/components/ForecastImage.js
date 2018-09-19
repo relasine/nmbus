@@ -20,10 +20,11 @@ const weatherIcons = {
   chancetstorms: './t-storm.svg',
   haze: './cloud.svg',
   fog: './cloud.svg',
-  tstorms: './t-storm.svg'
+  tstorms: './t-storm.svg',
+  unknown: './question-on-cloud.svg'
   };
  
-function ForecastImage(props) {
+function ForecastImage(props) {  
   return (
     <img src={weatherIcons[props.icon]} alt={props.icon} className={props.classLabel}/>
   )

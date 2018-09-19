@@ -5,11 +5,13 @@ import Current from './Current'
 import SevenHour from './SevenHour'
 import TenDay from './TenDay'
 import BottomBar from './BottomBar'
+import ErrorPage from './ErrorPage'
 // import data from '../fakeapi'
 import apikey from '../apikey';
+import Trie from '@relasine/auto-complete';
+import cities from '../cities'
 
 import '../css/App.css';
-
 
 class App extends Component {
   constructor() {
@@ -17,15 +19,18 @@ class App extends Component {
 
     this.state = {
       data: undefined,
+      location: undefined,
       currentState: 'active-current current',
       sevenHourState: 'inactive-seven-hour seven-hour',
       tenDayState: 'inactive-ten-day ten-day',
       currentButton: 'current-button-active current-button button',
       tenDayButton: 'ten-day-button ten-day-button-inactive button',
-      sevenHourButton: 'seven-hour-button seven-hour-button-inactive button'
+      sevenHourButton: 'seven-hour-button seven-hour-button-inactive button',
+      trie: new Trie()
     }
     this.pageSet = this.pageSet.bind(this);
-}
+    this.fetchCall = this.fetchCall.bind(this);
+  }
 
 pageSet(page) {
   if (page === 'current' && this.state.currentState !== 'active current') { 
@@ -56,22 +61,71 @@ pageSet(page) {
 }
 
 componentDidMount() {
-    fetch(`http://api.wunderground.com/api/${apikey}/conditions/hourly/forecast10day/q/autoip.json`)
+    this.fetchCall('autoip')
+    this.state.trie.populate(cities.data);
+}
+
+fetchCall(string) {
+  if (!parseInt(string, 10) && string !== 'autoip') {
+    string = string.split(', ')
+    const popped = string.pop()
+    string.unshift(popped)
+    string = string.join('/')
+  }
+
+  fetch(`http://api.wunderground.com/api/${apikey}/conditions/hourly/forecast10day/q/${string}.json`)
     .then(response => response.json())
     .then(data => {
       this.setState({
         current: true,
-        data: data
+        data: data,
+        currentState: 'active current',
+        sevenHourState: 'inactive-seven-hour seven-hour',
+        tenDayState: 'inactive-ten-day ten-day', 
+        currentButton: 'current-button-active current-button button',
+        tenDayButton: 'ten-day-button ten-day-button-inactive button',
+        sevenHourButton: 'seven-hour-button seven-hour-button-inactive button'
       });
-    })
+    });
 }
 
 
+
   render() {
-    if(this.state.data) {
+
+    console.log(this.state.data)
+
+    if (this.state.data && this.state.data.response.error) {
+      return (<div className="App">
+        <main>
+          <Logo 
+            trie={this.state.trie} 
+            fetchCall={this.fetchCall}
+          />
+          <ErrorPage />
+          </main>
+        </div>)
+    } else if (this.state.data && this.state.data.response.results) {
+      console.log('yo')
       return (
         <div className="App">
-          <Logo />
+        <main>
+          <Logo 
+            trie={this.state.trie} 
+            fetchCall={this.fetchCall}
+          />
+          <ErrorPage />
+          </main>
+        </div>
+      )
+    } else if (this.state.data && !this.state.data.response.error) {
+      return (
+        <div className="App">
+          <main>
+          <Logo 
+            trie={this.state.trie} 
+            fetchCall={this.fetchCall}
+          />
           <Current 
             classSetting={this.state.currentState} 
             data={this.state.data}
@@ -87,10 +141,11 @@ componentDidMount() {
             tenDayButton={this.state.tenDayButton}
             sevenHourButton={this.state.sevenHourButton}
           />
+          </main>
         </div>
       );
     } else {
-      return (<div></div>)
+      return (<div className="App"></div>)
     }
   }
 }

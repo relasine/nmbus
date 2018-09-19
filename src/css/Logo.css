@@ -1,21 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
+
+
 .logo-container {
   padding: 0;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
+  margin: 0;
   height: 100px;
   width: 255px;
 }
 
+.logo-box {
+  transition: .5s;
+  position: absolute;
+  right: 10%;
+  opacity: 1;
+  display: flex;
+  height: 100px;
+  width: 114px;
+}
+
+.logo-inactive {
+  opacity: 0;
+  margin-left: default;
+  margin-right: default;
+  left: 0;
+  right: 100%;
+}
+
 .logo {
   width: 50px;
+  height: 50px;
+  margin-top: 20px;
 }
 
 .brand-title {
-  margin-top: 2rem;
-  margin-left: 1.5rem;
+  margin-top: 20px;
+  margin-right: 1rem;
   color: #fff;
   font-size: 1.2rem;
   text-align: center;
+  font-family: 'Didact Gothic', sans-serif;
+}
 
+.search-icon {
+  position: absolute;
+  width: 30px;
+  left: 15px;
+  top: 15px;
+  z-index: 1
+}
+
+.search-field {
+  position: absolute;
+  height: 30px;
+  border-radius: 25px;
+  width: 300px;
+  font-size: 22px;
+  border: none;
+  top: 14px;
+  text-indent: 10px;
+  left: 56px;
+  transition: .5s;
+  z-index: 1;
+}
+
+.inactive-search {
+  left: 200%;
+}
+
+.search-button {
+  transition: .5s;
+  position: absolute;
+  width: 30px;
+  left: 89%;
+  top: 2%;
+}
+
+.inactive-search-button {
+  left: 200%;
+}
+
+.logo-container ul {
+  position: absolute;
+  top: 33px;
+  left: 70px;
+  display: block;
+  background: #fff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  z-index: 2;
+  width: 273px;
+  padding: 0;
+}
+
+.city-none {
+  display: none;
+}
+
+.city-name {
+  list-style: none;
+  background: #fff;
+  margin-left: .5rem;
+  margin-top: .15rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }

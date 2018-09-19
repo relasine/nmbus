@@ -1,0 +1,17 @@
+.error-page {
+  margin-top: 3rem;
+  display: grid;
+  justify-content: center;
+}
+
+.error-page img {
+  width: 200px;
+  display: block;
+  margin: auto;
+}
+
+.error-text {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}

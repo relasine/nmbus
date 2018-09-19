@@ -8,7 +8,7 @@ function BottomBar(props) {
       <section className={props.tenDayButton} onClick={() => {
           props.pageSet('tenDay')
         }}>
-        <h4>10-Day</h4>
+        <h4>Ten-Day</h4>
       </section>
       <section className={props.currentButton} onClick={() => {props.pageSet('current')}}>
         <h4>Current</h4>
