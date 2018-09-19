@@ -11,9 +11,6 @@
 .logo-box {
   transition: .5s;
   position: absolute;
-  /*margin-left: auto;*/
-  /*margin-right: auto;*/
-  /*left: 0;*/
   right: 10%;
   opacity: 1;
   display: flex;
@@ -66,15 +63,21 @@
   z-index: 1;
 }
 
-.search-icon:hover {
-  cursor: pointer;
-}
-
 .inactive-search {
   left: 200%;
 }
 
+.search-button {
+  transition: .5s;
+  position: absolute;
+  width: 30px;
+  left: 89%;
+  top: 2%;
+}
 
+.inactive-search-button {
+  left: 200%;
+}
 
 .logo-container ul {
   position: absolute;

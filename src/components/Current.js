@@ -7,6 +7,7 @@ import '../css/Current.css';
 function Current(props) {
 
   return (
+
     <div className={props.classSetting}>
         <h3 className='current-location'>{props.data.current_observation.display_location.full}</h3>
       <section className='current-weather-data'>

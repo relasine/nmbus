@@ -63,7 +63,6 @@ pageSet(page) {
 componentDidMount() {
     this.fetchCall('autoip')
     this.state.trie.populate(cities.data);
-
 }
 
 fetchCall(string) {
@@ -77,7 +76,6 @@ fetchCall(string) {
   fetch(`http://api.wunderground.com/api/${apikey}/conditions/hourly/forecast10day/q/${string}.json`)
     .then(response => response.json())
     .then(data => {
-      // console.log(string, data)
       this.setState({
         current: true,
         data: data,
@@ -95,7 +93,32 @@ fetchCall(string) {
 
   render() {
 
-    if(this.state.data && !this.state.data.response.error) {
+    console.log(this.state.data)
+
+    if (this.state.data && this.state.data.response.error) {
+      return (<div className="App">
+        <main>
+          <Logo 
+            trie={this.state.trie} 
+            fetchCall={this.fetchCall}
+          />
+          <ErrorPage />
+          </main>
+        </div>)
+    } else if (this.state.data && this.state.data.response.results) {
+      console.log('yo')
+      return (
+        <div className="App">
+        <main>
+          <Logo 
+            trie={this.state.trie} 
+            fetchCall={this.fetchCall}
+          />
+          <ErrorPage />
+          </main>
+        </div>
+      )
+    } else if (this.state.data && !this.state.data.response.error) {
       return (
         <div className="App">
           <main>
@@ -121,16 +144,6 @@ fetchCall(string) {
           </main>
         </div>
       );
-    } else if (this.state.data && this.state.data.response.error){
-      return (<div className="App">
-        <main>
-          <Logo 
-            trie={this.state.trie} 
-            fetchCall={this.fetchCall}
-          />
-          <ErrorPage />
-          </main>
-        </div>)
     } else {
       return (<div className="App"></div>)
     }

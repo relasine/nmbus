@@ -24,7 +24,7 @@ const weatherIcons = {
   unknown: './question-on-cloud.svg'
   };
  
-function ForecastImage(props) {
+function ForecastImage(props) {  
   return (
     <img src={weatherIcons[props.icon]} alt={props.icon} className={props.classLabel}/>
   )

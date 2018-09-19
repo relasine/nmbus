@@ -10,6 +10,7 @@ export default class Logo extends Component {
 
     this.state = {
       searchState: 'inactive-search search-field',
+      searchButtonState: 'inactive-search-button search-button',
       logoState: 'logo-box logo-active',
       cityArray: [],
       dataListState: 'city-select city-none',
@@ -23,11 +24,13 @@ export default class Logo extends Component {
     if (this.state.searchState === 'active-search search-field') {
       this.setState({
         searchState: 'inactive-search search-field',
+        searchButtonState: 'inactive-search-button search-button',
         logoState: 'logo-box logo-active'
       })
     } else {
       this.setState({
         searchState: 'active-search search-field',
+        searchButtonState: 'active-search-button search-button',
         logoState: 'log-box logo-inactive'
       })
     }
@@ -60,6 +63,7 @@ export default class Logo extends Component {
     this.setState({
       cityArray: [],
       searchState: 'inactive-search search-field',
+      searchButtonState: 'inactive-search-button search-button',
       logoState: 'logo-box logo-active',
       location: ''
     })
@@ -69,7 +73,10 @@ export default class Logo extends Component {
 
     return (
       <div className="logo-container">
-        <img src="./magnifying-glass.svg" alt="search-icon" className="search-icon" onClick={this.toggleSearch} />
+        <img src="./magnifying-glass.svg" 
+          alt="search-icon" 
+          className="search-icon" 
+          onClick={this.toggleSearch} />
         <input 
           list="city-list"
           type="text" 
@@ -84,6 +91,15 @@ export default class Logo extends Component {
           value={this.state.location}
         >
         </input>
+        <img 
+          src="./arrow-pointing-right-in-a-circle.svg" 
+          alt="enter-button" 
+          className={this.state.searchButtonState} 
+          onClick={() => {
+            this.props.fetchCall(this.state.location);
+            this.resetCities();
+          }}
+        />
         <ul id="city-list" className={this.state.dataListState}>
           {this.state.cityArray.length > 0 &&
             this.state.cityArray.map((city) => {
