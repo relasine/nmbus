@@ -6,6 +6,7 @@
   margin: 0;
   height: 100px;
   width: 255px;
+  overflow: hidden;
 }
 
 .logo-box {
@@ -20,10 +21,9 @@
 
 .logo-inactive {
   opacity: 0;
-  margin-left: default;
-  margin-right: default;
-  left: 0;
-  right: 100%;
+  height: 50px;
+  right: 300%;
+  /*display: none;*/
 }
 
 .logo {
