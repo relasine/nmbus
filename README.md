@@ -3,8 +3,8 @@ This project is a weather app designed specifically for phones. It uses simple, 
 All transitions are animated between the current forecast, ten-day forecast, seven-hour forecastj, the search bar, and the logo.
 
 -> ![pic4](https://user-images.githubusercontent.com/29719272/45781213-9897ee00-bc1c-11e8-81aa-cf43001b7aa5.png) <-
-![pic2](https://user-images.githubusercontent.com/29719272/45781188-8fa71c80-bc1c-11e8-8432-9558fdf93de4.png)
-![pic3](https://user-images.githubusercontent.com/29719272/45781200-96359400-bc1c-11e8-98f1-3c014a045285.png)
-![pic1](https://user-images.githubusercontent.com/29719272/45781182-87e77800-bc1c-11e8-895d-c4acfab22529.png)
+-> ![pic2](https://user-images.githubusercontent.com/29719272/45781188-8fa71c80-bc1c-11e8-8432-9558fdf93de4.png) <-
+-> ![pic3](https://user-images.githubusercontent.com/29719272/45781200-96359400-bc1c-11e8-98f1-3c014a045285.png) <-
+-> ![pic1](https://user-images.githubusercontent.com/29719272/45781182-87e77800-bc1c-11e8-895d-c4acfab22529.png) <-
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
