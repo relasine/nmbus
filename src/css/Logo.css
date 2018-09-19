@@ -11,10 +11,10 @@
 .logo-box {
   transition: .5s;
   position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
+  /*left: 0;*/
+  right: 10%;
   opacity: 1;
   display: flex;
   height: 100px;
@@ -31,15 +31,17 @@
 
 .logo {
   width: 50px;
+  height: 50px;
+  margin-top: 20px;
 }
 
 .brand-title {
-  margin-top: 2rem;
-  margin-left: 1.5rem;
+  margin-top: 20px;
+  margin-right: 1rem;
   color: #fff;
   font-size: 1.2rem;
   text-align: center;
-
+  font-family: 'Didact Gothic', sans-serif;
 }
 
 .search-icon {
@@ -72,25 +74,30 @@
   left: 200%;
 }
 
-.brand-title {
-  margin-top: 28px;
-  margin-left: .5rem;
-5font-family: 'Didact Gothic', sans-serif;
 
-}
 
-datalist {
+.logo-container ul {
   position: absolute;
-  top: 50px;
+  top: 33px;
   left: 70px;
   display: block;
   background: #fff;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   z-index: 2;
-  width: 200px;
+  width: 273px;
+  padding: 0;
 }
 
 .city-none {
   display: none;
+}
+
+.city-name {
+  list-style: none;
+  background: #fff;
+  margin-left: .5rem;
+  margin-top: .15rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }

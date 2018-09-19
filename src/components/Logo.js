@@ -12,9 +12,11 @@ export default class Logo extends Component {
       searchState: 'inactive-search search-field',
       logoState: 'logo-box logo-active',
       cityArray: [],
-      dataListState: 'city-select city-none'
+      dataListState: 'city-select city-none',
+      location: ''
     }
     this.toggleSearch = this.toggleSearch.bind(this);
+    this.resetCities = this.resetCities.bind(this);
   }
 
   toggleSearch() {
@@ -41,8 +43,6 @@ export default class Logo extends Component {
     cityList = this.props.trie.suggest(wordArray.join(''))
     }
 
-    console.log(cityList)
-
     if (cityList) {
       this.setState({
         cityArray: cityList,
@@ -56,6 +56,15 @@ export default class Logo extends Component {
     }
   }
 
+  resetCities() {
+    this.setState({
+      cityArray: [],
+      searchState: 'inactive-search search-field',
+      logoState: 'logo-box logo-active',
+      location: ''
+    })
+  }
+
   render() {
 
     return (
@@ -66,17 +75,29 @@ export default class Logo extends Component {
           type="text" 
           placeholder="city/zip" 
           className={this.state.searchState} 
-          onChange={(event) => {this.runSuggest(event)}}>
+          onChange={(event) => {
+            this.runSuggest(event)
+            this.setState({
+              location: event.target.value
+            })
+          }}
+          value={this.state.location}
+        >
         </input>
-        <datalist id="city-list" className={this.state.dataListState}>
-          {this.state.cityArray.length &&
+        <ul id="city-list" className={this.state.dataListState}>
+          {this.state.cityArray.length > 0 &&
             this.state.cityArray.map((city) => {
-              return <CityOption key={city} city={city} />
+              return <CityOption 
+                key={city} 
+                city={city} 
+                fetchCall={this.props.fetchCall}
+                resetCities={this.resetCities}
+          />
             })}
-        </datalist>
+        </ul>
         <div className={this.state.logoState}>
-          <img src="./thunder.svg" alt="nmbus-logo" className="logo" />
           <h2 className="brand-title">Nimbus Weather</h2>
+          <img src="./thunder.svg" alt="nmbus-logo" className="logo" />
         </div>
       </div>
     )

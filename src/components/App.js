@@ -28,6 +28,7 @@ class App extends Component {
       trie: new Trie()
     }
     this.pageSet = this.pageSet.bind(this);
+    this.fetchCall = this.fetchCall.bind(this);
   }
 
 pageSet(page) {
@@ -71,15 +72,39 @@ componentDidMount() {
 
 }
 
+fetchCall(string) {
+  const location = string.split(', ')
+  const popped = location.pop()
+  location.unshift(popped)
+  fetch(`http://api.wunderground.com/api/${apikey}/conditions/hourly/forecast10day/q/${location.join('/')}.json`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(location, data)
+      this.setState({
+        current: true,
+        data: data,
+        currentState: 'active current',
+        sevenHourState: 'inactive-seven-hour seven-hour',
+        tenDayState: 'inactive-ten-day ten-day', 
+        currentButton: 'current-button-active current-button button',
+        tenDayButton: 'ten-day-button ten-day-button-inactive button',
+        sevenHourButton: 'seven-hour-button seven-hour-button-inactive button'
+      });
+    });
+}
 
 
 
   render() {
+
     if(this.state.data) {
       return (
         <div className="App">
           <main>
-          <Logo trie={this.state.trie} />
+          <Logo 
+            trie={this.state.trie} 
+            fetchCall={this.fetchCall}
+          />
           <Current 
             classSetting={this.state.currentState} 
             data={this.state.data}

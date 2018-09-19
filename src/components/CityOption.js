@@ -4,7 +4,15 @@ import React from 'react';
 
 function CityOption(props){
   return (
-    <option className='city-name' value={props.city}>{props.city}</option>
+    <li 
+      className='city-name' 
+      value={props.city}
+      onClick={(event) => {
+        props.fetchCall(event.target.innerText);
+        props.resetCities();
+      }}
+    >{props.city}
+    </li>
   )
 }
 
