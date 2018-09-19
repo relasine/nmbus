@@ -7,9 +7,10 @@ import TenDay from './TenDay'
 import BottomBar from './BottomBar'
 // import data from '../fakeapi'
 import apikey from '../apikey';
+import Trie from '@relasine/auto-complete';
+import cities from '../cities'
 
 import '../css/App.css';
-
 
 class App extends Component {
   constructor() {
@@ -17,12 +18,14 @@ class App extends Component {
 
     this.state = {
       data: undefined,
+      location: undefined,
       currentState: 'active-current current',
       sevenHourState: 'inactive-seven-hour seven-hour',
       tenDayState: 'inactive-ten-day ten-day',
       currentButton: 'current-button-active current-button button',
       tenDayButton: 'ten-day-button ten-day-button-inactive button',
-      sevenHourButton: 'seven-hour-button seven-hour-button-inactive button'
+      sevenHourButton: 'seven-hour-button seven-hour-button-inactive button',
+      trie: new Trie()
     }
     this.pageSet = this.pageSet.bind(this);
   }
@@ -63,8 +66,12 @@ componentDidMount() {
         current: true,
         data: data
       });
-    })
+    });
+    this.state.trie.populate(cities.data);
+
 }
+
+
 
 
   render() {
@@ -72,7 +79,7 @@ componentDidMount() {
       return (
         <div className="App">
           <main>
-          <Logo />
+          <Logo trie={this.state.trie} />
           <Current 
             classSetting={this.state.currentState} 
             data={this.state.data}
@@ -92,7 +99,7 @@ componentDidMount() {
         </div>
       );
     } else {
-      return (<div></div>)
+      return (<div className="App"></div>)
     }
   }
 }
