@@ -6,6 +6,7 @@ import SevenHour from './SevenHour'
 import TenDay from './TenDay'
 import BottomBar from './BottomBar'
 import ErrorPage from './ErrorPage'
+import Loading from './Loading'
 // import data from '../fakeapi'
 import apikey from '../apikey';
 import Trie from '@relasine/auto-complete';
@@ -19,6 +20,7 @@ class App extends Component {
 
     this.state = {
       data: undefined,
+      loading: false,
       location: undefined,
       currentState: 'active-current current',
       sevenHourState: 'inactive-seven-hour seven-hour',
@@ -66,6 +68,10 @@ componentDidMount() {
 }
 
 fetchCall(string) {
+  this.setState({
+    data: undefined
+  });
+
   if (!parseInt(string, 10) && string !== 'autoip') {
     string = string.split(', ')
     const popped = string.pop()
@@ -79,6 +85,7 @@ fetchCall(string) {
       this.setState({
         current: true,
         data: data,
+        loading: false,
         currentState: 'active current',
         sevenHourState: 'inactive-seven-hour seven-hour',
         tenDayState: 'inactive-ten-day ten-day', 
@@ -103,6 +110,12 @@ fetchCall(string) {
             fetchCall={this.fetchCall}
           />
           <ErrorPage />
+          <BottomBar 
+            pageSet={this.pageSet} 
+            currentButton={this.state.currentButton}
+            tenDayButton={this.state.tenDayButton}
+            sevenHourButton={this.state.sevenHourButton}
+          />
           </main>
         </div>)
     } else if (this.state.data && this.state.data.response.results) {
@@ -115,6 +128,12 @@ fetchCall(string) {
             fetchCall={this.fetchCall}
           />
           <ErrorPage />
+          <BottomBar 
+            pageSet={this.pageSet} 
+            currentButton={this.state.currentButton}
+            tenDayButton={this.state.tenDayButton}
+            sevenHourButton={this.state.sevenHourButton}
+          />
           </main>
         </div>
       )
@@ -145,7 +164,23 @@ fetchCall(string) {
         </div>
       );
     } else {
-      return (<div className="App"></div>)
+      return (        
+        <div className="App">
+        <main>
+          <Logo 
+            trie={this.state.trie} 
+            fetchCall={this.fetchCall}
+          />
+          <Loading />
+          <h1 className="loading-text">Loading...</h1>
+          <BottomBar 
+            pageSet={this.pageSet} 
+            currentButton={this.state.currentButton}
+            tenDayButton={this.state.tenDayButton}
+            sevenHourButton={this.state.sevenHourButton}
+          />
+          </main>
+        </div>)
     }
   }
 }
