@@ -1,0 +1,58 @@
+.loader {
+  width: 150px;
+  height: 150px;
+  transform: rotate(45deg) scale(.6);
+  margin: 8rem auto;
+}
+
+.loader span {
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  display: block;
+  float: left;
+  animation: animate 2s linear infinite;
+  border-radius: 50%;
+}
+
+.loader span:nth-child(3) {
+  animation-delay: .8s;
+}
+
+.loader span:nth-child(2),
+.loader span:nth-child(6) {
+  animation-delay: .6s;
+}
+
+.loader span:nth-child(1),
+.loader span:nth-child(5),
+.loader span:nth-child(9) {
+  animation-delay: .4s;
+}
+
+.loader span:nth-child(4),
+.loader span:nth-child(8) {
+  animation-delay: .2s;
+}
+
+.loader span:nth-child(7) {
+  animation-delay: 0s;
+}
+
+@keyframes animate {
+  0% {
+    transform:scale(1);
+  }
+  30% {
+    transform:scale(0);
+  }
+  50% {
+    transform:scale(0);
+  }
+  75% {
+    transform:scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
