@@ -1,9 +1,12 @@
 .daily-weather {
   display: grid;
   grid-template-columns: 200px 50px 1fr;  
+  width: 414px;
   align-items: center;
+  box-sizing: border-box;
   /*height: 50px;*/
-  margin: .45rem 1rem;
+  margin: .45rem 0;
+  padding: 0 1rem;
   color: white;
 }
 
